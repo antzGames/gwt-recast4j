@@ -4,12 +4,49 @@
 ![Languages](https://img.shields.io/github/languages/top/ppiastucki/recast4j)
 ![Dependencies](https://img.shields.io/librariesio/github/ppiastucki/recast4j)
 
-Recast4j
-========
+GWT Compatible - Recast4j
+=========================
 
-Java Port of Recast and Detour navigation mesh toolset.
+Java Port of Recast and Detour navigation mesh toolset that is GWT compatible.
 
 ![screenshot of a navmesh baked with the sample program](/recast-demo/screenshot.png?raw=true)
+
+## How to use in your libGDX project
+
+Add the `recast4jVersion=1.5.7-SNAPSHOT` to your `gradle.properties` file.
+Feel free to update the version number to the latest release.
+
+Add the following in your `core` project's `gradle.build`:
+
+```json
+dependencies {
+  api "org.recast4j:recast:$recast4jVersion"
+  api "org.recast4j:detour:$recast4jVersion"
+  api "org.recast4j:detour-crowd:$recast4jVersion"
+}
+```
+
+Add the following in your `html` project's `gradle.build`:
+
+```json
+dependencies {
+  implementation "org.recast4j:recast:$recast4jVersion"
+  implementation "org.recast4j:detour:$recast4jVersion"
+  implementation "org.recast4j:detour-crowd:$recast4jVersion"
+
+  implementation "org.recast4j:recast:$recast4jVersion:sources"
+  implementation "org.recast4j:detour:$recast4jVersion:sources"
+  implementation "org.recast4j:detour-crowd:$recast4jVersion:sources"
+}
+```
+
+Add the following to your `GdxDefinition.gwt.xml` file in your html project:
+
+```json
+    <inherits name="recast4j_detour" />
+    <inherits name="recast4j_detour_crowd" />
+    <inherits name="recast4j_recast" />
+```
 
 ## Recast
 
