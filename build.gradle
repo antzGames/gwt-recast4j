@@ -58,7 +58,7 @@ sourceCompatibility = 1.8
 def projectName = 'gwt-recast4j'
 
 //Change this to whatever Maven Central group you might publish to, which is probably not this one if you aren't Tommy Ettinger.
-group 'com.github.antzGames'
+group 'com.github.antzGames.gwt-recast4j'
 
 version "$VERSION_NAME" // You can set the version in gradle.properties .
 
@@ -105,7 +105,8 @@ jar {
 
 subprojects {    
 
-    group = "org.recast4j"
+    //group = "org.recast4j"
+    group = "com.github.antzGames.gwt-recast4j"
 
     repositories {
         mavenLocal()
