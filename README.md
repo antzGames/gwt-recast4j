@@ -20,9 +20,9 @@ Add the following in your `core` project's `gradle.build`:
 
 ```
 dependencies {
-  api "org.recast4j:recast:$recast4jVersion"
-  api "org.recast4j:detour:$recast4jVersion"
-  api "org.recast4j:detour-crowd:$recast4jVersion"
+  api "com.github.antzGames.gwt-recast4j:recast:$recast4jVersion"
+  api "com.github.antzGames.gwt-recast4j:detour:$recast4jVersion"
+  api "com.github.antzGames.gwt-recast4j:detour-crowd:$recast4jVersion"
 }
 ```
 
@@ -30,13 +30,13 @@ Add the following in your `html` project's `gradle.build`:
 
 ```
 dependencies {
-  implementation "org.recast4j:recast:$recast4jVersion"
-  implementation "org.recast4j:detour:$recast4jVersion"
-  implementation "org.recast4j:detour-crowd:$recast4jVersion"
+  implementation "com.github.antzGames.gwt-recast4j:recast:$recast4jVersion"
+  implementation "com.github.antzGames.gwt-recast4j:detour:$recast4jVersion"
+  implementation "com.github.antzGames.gwt-recast4j:detour-crowd:$recast4jVersion"
 
-  implementation "org.recast4j:recast:$recast4jVersion:sources"
-  implementation "org.recast4j:detour:$recast4jVersion:sources"
-  implementation "org.recast4j:detour-crowd:$recast4jVersion:sources"
+  implementation "com.github.antzGames.gwt-recast4j:recast:$recast4jVersion:sources"
+  implementation "com.github.antzGames.gwt-recast4j:detour:$recast4jVersion:sources"
+  implementation "com.github.antzGames.gwt-recast4j:detour-crowd:$recast4jVersion:sources"
 }
 ```
 
