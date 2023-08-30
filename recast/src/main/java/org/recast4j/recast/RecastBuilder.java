@@ -21,7 +21,6 @@ package org.recast4j.recast;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -101,7 +100,8 @@ public class RecastBuilder {
         int th = twh[1];
         List<RecastBuilderResult> result = null;
         if (executor.isPresent()) {
-            result = buildMultiThread(geom, cfg, bmin, bmax, tw, th, executor.get());
+            result = buildSingleThread(geom, cfg, bmin, bmax, tw, th); // Added by Antz
+            //result = buildMultiThread(geom, cfg, bmin, bmax, tw, th, executor.get());
         } else {
             result = buildSingleThread(geom, cfg, bmin, bmax, tw, th);
         }
@@ -120,34 +120,34 @@ public class RecastBuilder {
         return result;
     }
 
-    private List<RecastBuilderResult> buildMultiThread(InputGeomProvider geom, RecastConfig cfg, float[] bmin, float[] bmax,
-            int tw, int th, Executor executor) {
-        List<RecastBuilderResult> result = new ArrayList<>(tw * th);
-        AtomicInteger counter = new AtomicInteger();
-        CountDownLatch latch = new CountDownLatch(tw * th);
-        for (int x = 0; x < tw; ++x) {
-            for (int y = 0; y < th; ++y) {
-                final int tx = x;
-                final int ty = y;
-                executor.execute(() -> {
-                    try {
-                        RecastBuilderResult tile = buildTile(geom, cfg, bmin, bmax, tx, ty, counter, tw * th);
-                        synchronized (result) {
-                            result.add(tile);
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    latch.countDown();
-                });
-            }
-        }
-        try {
-            latch.await();
-        } catch (InterruptedException e) {
-        }
-        return result;
-    }
+//    private List<RecastBuilderResult> buildMultiThread(InputGeomProvider geom, RecastConfig cfg, float[] bmin, float[] bmax,
+//            int tw, int th, Executor executor) {
+//        List<RecastBuilderResult> result = new ArrayList<>(tw * th);
+//        AtomicInteger counter = new AtomicInteger();
+//        CountDownLatch latch = new CountDownLatch(tw * th);
+//        for (int x = 0; x < tw; ++x) {
+//            for (int y = 0; y < th; ++y) {
+//                final int tx = x;
+//                final int ty = y;
+//                executor.execute(() -> {
+//                    try {
+//                        RecastBuilderResult tile = buildTile(geom, cfg, bmin, bmax, tx, ty, counter, tw * th);
+//                        synchronized (result) {
+//                            result.add(tile);
+//                        }
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                    latch.countDown();
+//                });
+//            }
+//        }
+//        try {
+//            latch.await();
+//        } catch (InterruptedException e) {
+//        }
+//        return result;
+//    }
 
     private RecastBuilderResult buildTile(InputGeomProvider geom, RecastConfig cfg, float[] bmin, float[] bmax, final int tx,
             final int ty, AtomicInteger counter, int total) {
