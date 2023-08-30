@@ -39,7 +39,7 @@ dependencies {
 }
 ```
 
-Add the following to your `GdxDefinition.gwt.xml` file in your html project:
+Add the following to your `GdxDefinition.gwt.xml` file in your `html` project:
 
 ```
     <inherits name="recast4j_detour" />
