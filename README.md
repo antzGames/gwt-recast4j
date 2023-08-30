@@ -18,7 +18,7 @@ Feel free to update the version number to the latest release.
 
 Add the following in your `core` project's `gradle.build`:
 
-```json
+```
 dependencies {
   api "org.recast4j:recast:$recast4jVersion"
   api "org.recast4j:detour:$recast4jVersion"
@@ -28,7 +28,7 @@ dependencies {
 
 Add the following in your `html` project's `gradle.build`:
 
-```json
+```
 dependencies {
   implementation "org.recast4j:recast:$recast4jVersion"
   implementation "org.recast4j:detour:$recast4jVersion"
@@ -42,7 +42,7 @@ dependencies {
 
 Add the following to your `GdxDefinition.gwt.xml` file in your html project:
 
-```json
+```
     <inherits name="recast4j_detour" />
     <inherits name="recast4j_detour_crowd" />
     <inherits name="recast4j_recast" />
