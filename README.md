@@ -14,7 +14,6 @@ Java Port of Recast and Detour navigation mesh toolset that is GWT compatible.
 ## How to use in your libGDX project
 
 Add the `recast4jVersion=gwt_migration_antz-SNAPSHOT` to your `gradle.properties` file.
-Feel free to update the version number to the latest release.
 
 Add the following in your `core` project's `gradle.build`:
 
