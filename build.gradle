@@ -132,10 +132,10 @@ subprojects {
     }
 
     java {
-//        if (!project.hasProperty('ci')) {
-//            withSourcesJar()
-//            withJavadocJar()
-//        }
+        if (!project.hasProperty('ci')) {
+            withSourcesJar()
+            withJavadocJar()
+        }
     }
 
     compileJava {
