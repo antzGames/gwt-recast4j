@@ -17,6 +17,8 @@ freely, subject to the following restrictions:
 */
 package org.recast4j.detour;
 
+import com.badlogic.gdx.utils.TimeUtils;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.recast4j.detour.DetourCommon.vDist2D;
@@ -106,15 +108,18 @@ public class RandomPointTest extends AbstractDetourTest {
         for (int i = 0; i < 1000; i++) {
             query.findRandomPointWithinCircle(point.getRandomRef(), point.getRandomPt(), radius, filter, f);
         }
-        long t1 = System.nanoTime();
+        //long t1 = System.nanoTime();
+        long t1 = TimeUtils.nanoTime(); // Antz
         for (int i = 0; i < 10000; i++) {
             query.findRandomPointAroundCircle(point.getRandomRef(), point.getRandomPt(), radius, filter, f);
         }
-        long t2 = System.nanoTime();
+        //long t2 = System.nanoTime();
+        long t2 = TimeUtils.nanoTime(); // Antz
         for (int i = 0; i < 10000; i++) {
             query.findRandomPointWithinCircle(point.getRandomRef(), point.getRandomPt(), radius, filter, f);
         }
-        long t3 = System.nanoTime();
+        //long t3 = System.nanoTime();
+        long t3 = TimeUtils.nanoTime(); // Antz
         System.out.println("Random point around circle: " + (t2 - t1) / 1000000 + "ms");
         System.out.println("Random point within circle: " + (t3 - t2) / 1000000 + "ms");
     }

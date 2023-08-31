@@ -18,6 +18,8 @@ freely, subject to the following restrictions:
 
 package org.recast4j.detour.crowd;
 
+import com.badlogic.gdx.utils.TimeUtils;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -58,11 +60,13 @@ public class CrowdTelemetry {
     }
 
     void start(String name) {
-        executionTimings.put(name, System.nanoTime());
+        //executionTimings.put(name, System.nanoTime());
+        executionTimings.put(name, TimeUtils.nanoTime()); // Antz
     }
 
     void stop(String name) {
-        long duration = System.nanoTime() - executionTimings.get(name);
+        //long duration = System.nanoTime() - executionTimings.get(name);
+        long duration = TimeUtils.nanoTime() - executionTimings.get(name); // Antz
         List<Long> s = executionTimingSamples.computeIfAbsent(name, __ -> new ArrayList<>());
         if (s.size() == TIMING_SAMPLES) {
             s.remove(0);

@@ -587,9 +587,11 @@ public class CrowdTool implements Tool {
         if (nav == null)
             return;
 
-        long startTime = System.nanoTime();
+        //long startTime = System.nanoTime();
+        long startTime = TimeUtils.nanoTime(); // Antz
         crowd.update(dt, m_agentDebug);
-        long endTime = System.nanoTime();
+        //long endTime = System.nanoTime();
+        long endTime = TimeUtils.nanoTime(); // Antz
 
         // Update agent trails
         for (CrowdAgent ag : crowd.getActiveAgents()) {

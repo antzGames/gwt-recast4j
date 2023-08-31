@@ -17,6 +17,8 @@ freely, subject to the following restrictions:
 */
 package org.recast4j.recast;
 
+import com.badlogic.gdx.utils.TimeUtils;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -28,11 +30,13 @@ public class Telemetry {
     private final Map<String, AtomicLong> timerAccum = new ConcurrentHashMap<>();
 
     public void startTimer(String name) {
-        timerStart.get().put(name, new AtomicLong(System.nanoTime()));
+        //timerStart.get().put(name, new AtomicLong(System.nanoTime()));
+        timerStart.get().put(name, new AtomicLong(TimeUtils.nanoTime()));  // Antz
     }
 
     public void stopTimer(String name) {
-        timerAccum.computeIfAbsent(name, __ -> new AtomicLong()).addAndGet(System.nanoTime() - timerStart.get().get(name).get());
+        //timerAccum.computeIfAbsent(name, __ -> new AtomicLong()).addAndGet(System.nanoTime() - timerStart.get().get(name).get());
+        timerAccum.computeIfAbsent(name, __ -> new AtomicLong()).addAndGet(TimeUtils.nanoTime() - timerStart.get().get(name).get()); // Antz
     }
 
     public void warn(String string) {

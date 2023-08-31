@@ -17,6 +17,8 @@ freely, subject to the following restrictions:
 */
 package org.recast4j.recast;
 
+import com.badlogic.gdx.utils.TimeUtils;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.recast4j.recast.RecastConstants.RC_MESH_NULL_IDX;
 
@@ -90,7 +92,8 @@ public class RecastSoloMeshTest {
         m_partitionType = partitionType;
         ObjImporter importer = new ObjImporter();
         InputGeomProvider geomProvider = importer.load(getClass().getResourceAsStream(filename));
-        long time = System.nanoTime();
+        //long time = System.nanoTime();
+        long time = TimeUtils.nanoTime(); // Antz
         float[] bmin = geomProvider.getMeshBoundsMin();
         float[] bmax = geomProvider.getMeshBoundsMax();
         Telemetry m_ctx = new Telemetry();
@@ -196,7 +199,8 @@ public class RecastSoloMeshTest {
         // you use tiles)
         // * good choice to use for tiled navmesh with medium and small sized
         // tiles
-        long time3 = System.nanoTime();
+        //long time3 = System.nanoTime();
+        long time3 = TimeUtils.nanoTime(); // Antz
 
         if (m_partitionType == PartitionType.WATERSHED) {
             // Prepare for region partitioning, by calculating distance field
@@ -243,7 +247,8 @@ public class RecastSoloMeshTest {
         assertThat(m_dmesh.nmeshes).as("Mesh Detail Meshes").isEqualTo(expDetMeshes);
         assertThat(m_dmesh.nverts).as("Mesh Detail Verts").isEqualTo(expDetVerts);
         assertThat(m_dmesh.ntris).as("Mesh Detail Tris").isEqualTo(expDetTris);
-        long time2 = System.nanoTime();
+        //long time2 = System.nanoTime();
+        long time2 = TimeUtils.nanoTime(); // Antz
         System.out.println(filename + " : " + partitionType + "  " + (time2 - time) / 1000000 + " ms");
         System.out.println("           " + (time3 - time) / 1000000 + " ms");
         saveObj(filename.substring(0, filename.lastIndexOf('.')) + "_" + partitionType + "_detail.obj", m_dmesh);

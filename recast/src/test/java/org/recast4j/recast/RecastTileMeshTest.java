@@ -17,6 +17,8 @@ freely, subject to the following restrictions:
 */
 package org.recast4j.recast;
 
+import com.badlogic.gdx.utils.TimeUtils;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
@@ -102,15 +104,18 @@ public class RecastTileMeshTest {
             build(geom, builder, cfg, 1, true);
             build(geom, builder, cfg, 4, true);
         }
-        long t1 = System.nanoTime();
+        //long t1 = System.nanoTime();
+        long t1 = TimeUtils.nanoTime(); // Antz
         for (int i = 0; i < 4; i++) {
             build(geom, builder, cfg, 1, false);
         }
-        long t2 = System.nanoTime();
+        //long t2 = System.nanoTime();
+        long t2 = TimeUtils.nanoTime(); // Antz
         for (int i = 0; i < 4; i++) {
             build(geom, builder, cfg, 4, false);
         }
-        long t3 = System.nanoTime();
+        //long t3 = System.nanoTime();
+        long t3 = TimeUtils.nanoTime(); // Antz
         System.out.println(" Time ST : " + (t2 - t1) / 1000000);
         System.out.println(" Time MT : " + (t3 - t2) / 1000000);
     }

@@ -249,13 +249,15 @@ public class CrowdProfilingTool {
     }
 
     public void update(float dt) {
-        long startTime = System.nanoTime();
+        //long startTime = System.nanoTime();
+        long startTime = TimeUtils.nanoTime();  // Antz
         if (crowd != null) {
             crowd.config().pathQueueSize = pathQueueSize.get(0);
             crowd.config().maxFindPathIterations = maxIterations.get(0);
             crowd.update(dt, null);
         }
-        long endTime = System.nanoTime();
+        //long endTime = System.nanoTime();
+        long endTime = TimeUtils.nanoTime(); // Antz
         if (crowd != null) {
 
             NavMeshQuery navquery = new NavMeshQuery(navMesh);

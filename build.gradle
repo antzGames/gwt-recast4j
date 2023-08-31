@@ -127,6 +127,7 @@ subprojects {
         testImplementation (libs.assertj.core)
         testImplementation (libs.mockito)
         testRuntimeOnly (libs.junit5.engine)
+        api "com.badlogicgames.gdx:gdx:$gdxVersion"
 
         // I don't know what conditions may require this to run tests.
         //testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.9.0"

@@ -174,9 +174,11 @@ public class DynamicUpdateTool implements Tool {
             if (sposSet && eposSet && dynaMesh != null) {
                 float[] sp = { spos[0], spos[1] + 1.3f, spos[2] };
                 float[] ep = { epos[0], epos[1] + 1.3f, epos[2] };
-                long t1 = System.nanoTime();
+                //long t1 = System.nanoTime();
+                long t1 = TimeUtils.nanoTime(); // Antz
                 Optional<Float> hitPos = dynaMesh.voxelQuery().raycast(sp, ep);
-                long t2 = System.nanoTime();
+                //long t2 = System.nanoTime();
+                long t2 = TimeUtils.nanoTime(); // Antz
                 raycastTime = (t2 - t1) / 1_000_000L;
                 raycastHit = hitPos.isPresent();
                 raycastHitPos = hitPos.map(t -> new float[] { sp[0] + t * (ep[0] - sp[0]), sp[1] + t * (ep[1] - sp[1]),
@@ -411,11 +413,13 @@ public class DynamicUpdateTool implements Tool {
     }
 
     private void updateDynaMesh() {
-        long t = System.nanoTime();
+        //long t = System.nanoTime();
+        long t = TimeUtils.nanoTime(); // Antz
         try {
             boolean updated = dynaMesh.update(executor).get();
             if (updated) {
-                buildTime = (System.nanoTime() - t) / 1_000_000;
+                //buildTime = (System.nanoTime() - t) / 1_000_000;
+                buildTime = (TimeUtils.nanoTime() - t) / 1_000_000; // Antz
                 sample.update(null, dynaMesh.recastResults(), dynaMesh.navMesh());
                 sample.setChanged(false);
             }
@@ -655,13 +659,15 @@ public class DynamicUpdateTool implements Tool {
 
     private void buildDynaMesh() {
         configDynaMesh();
-        long t = System.nanoTime();
+        //long t = System.nanoTime();
+        long t = TimeUtils.nanoTime(); // Antz
         try {
             dynaMesh.build(executor).get();
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
-        buildTime = (System.nanoTime() - t) / 1_000_000;
+        //buildTime = (System.nanoTime() - t) / 1_000_000;
+        buildTime = (TimeUtils.nanoTime() - t) / 1_000_000; // Antz
         sample.update(null, dynaMesh.recastResults(), dynaMesh.navMesh());
     }
 

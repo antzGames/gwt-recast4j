@@ -165,7 +165,8 @@ public class RecastDemo {
             glfwPollEvents();
             nuklearUI.inputEnd(window);
 
-            long time = System.nanoTime() / 1000;
+            //long time = System.nanoTime() / 1000;
+            long time = TimeUtils.nanoTime() / 1000;
             float dt = (time - prevFrameTime) / 1000000.0f;
             prevFrameTime = time;
 
@@ -248,7 +249,8 @@ public class RecastDemo {
                     float m_detailSampleDist = settingsUI.getDetailSampleDist();
                     float m_detailSampleMaxError = settingsUI.getDetailSampleMaxError();
                     int m_tileSize = settingsUI.getTileSize();
-                    long t = System.nanoTime();
+                    //long t = System.nanoTime();
+                    long t = TimeUtils.nanoTime(); // Antz
 
                     Tupple2<List<RecastBuilderResult>, NavMesh> buildResult;
                     if (settingsUI.isTiled()) {
@@ -267,7 +269,8 @@ public class RecastDemo {
                     }
                     sample.update(sample.getInputGeom(), buildResult.first, buildResult.second);
                     sample.setChanged(false);
-                    settingsUI.setBuildTime((System.nanoTime() - t) / 1_000_000);
+                    //settingsUI.setBuildTime((System.nanoTime() - t) / 1_000_000);
+                    settingsUI.setBuildTime((TimeUtils.nanoTime( - t) / 1_000_000); // Antz
                     toolsUI.setSample(sample);
                 }
             } else {
