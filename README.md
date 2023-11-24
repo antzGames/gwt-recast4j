@@ -3,7 +3,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/org.recast4j/recast.svg?label=maven%20central)](https://search.maven.org/search?q=g:org.recast4j)
 ![Languages](https://img.shields.io/github/languages/top/ppiastucki/recast4j)
 ![Dependencies](https://img.shields.io/librariesio/github/ppiastucki/recast4j)
-
+![image](https://github.com/antzGames/gwt-recast4j/assets/10563814/9dc03772-45ac-43a7-8bda-ac56599451c1)
 GWT Compatible - Recast4j
 =========================
 
